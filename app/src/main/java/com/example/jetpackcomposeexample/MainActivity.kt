@@ -12,18 +12,18 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            TopAppBar("Android")
+            Greetings("Android")
         }
     }
 
     @Composable
-    fun TopAppBar(name: String) {
+    fun Greetings(name: String) {
         Text(text = "Hello $name")
     }
 
     @Preview(showBackground = true)
     @Composable
     fun defaultPreview(){
-        TopAppBar("Android")
+        Greetings("Android")
     }
 }
