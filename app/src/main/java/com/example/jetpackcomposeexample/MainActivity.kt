@@ -6,6 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
@@ -22,7 +23,10 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-           Column(
+
+            // Demo 1 : 12-02-2024
+
+       /*    Column(
                modifier = Modifier
                    .fillMaxSize()         // Full height / width
                   // .fillMaxSize(0.5f)     // Specific height / width
@@ -39,18 +43,30 @@ class MainActivity : ComponentActivity() {
                Text(text = "Hello")
                Text(text = "Android", color = Color.Red)
                Text(text = "Kotlin")
-           }
+           }*/
+
+            // Demo 2 : 12-02-2024
+
+           /* Row(
+                modifier = Modifier
+                    .fillMaxSize()         // Full height / width
+                    // .fillMaxSize(0.5f)     // Specific height / width
+                    // .height(200.dp)        // Specific height
+                    // .width(200.dp)         // Specific width
+                    .background(Color.Red),// Background Color
+
+                horizontalArrangement = Arrangement.SpaceAround,
+                //Arrangement.Top, Arrangement.Bottom, Arrangement.Center, Arrangement.SpaceAround, Arrangement.SpaceBetween, Arrangement.SpaceEvenly
+                verticalAlignment = Alignment.CenterVertically
+                //Alignment.End, Alignment.Start, Alignment.CenterHorizontally
+
+            ) {
+
+                Text(text = "JAVA")
+                Text(text = "PHP", color = Color.Blue)
+                Text(text = "Python")
+            }*/
         }
     }
 
-    @Composable
-    fun Greetings(name: String) {
-        Text(text = "Hello $name")
-    }
-
-    @Preview(showBackground = true)
-    @Composable
-    fun defaultPreview(){
-        Greetings("Android")
-    }
 }
