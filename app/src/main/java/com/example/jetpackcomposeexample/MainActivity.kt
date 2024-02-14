@@ -1,51 +1,173 @@
 package com.example.jetpackcomposeexample
 
+import android.annotation.SuppressLint
+import android.app.Notification.Action
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
+import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material3.Button
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.SnackbarHost
+import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
+import androidx.compose.material3.TextField
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.painter.Painter
-import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
+import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
 
+    @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContent {
+
+            // Demo 8 : 13-02-2024
+
+            val snackBarHostState = remember { SnackbarHostState() }
+            var textFieldState by remember {
+                mutableStateOf("")
+            }
+            val scope = rememberCoroutineScope()
+
+
+            Scaffold(
+                modifier = Modifier.fillMaxSize(),
+                snackbarHost = { SnackbarHost(hostState = snackBarHostState) }
+
+            ) {
+
+                Column(
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    verticalArrangement = Arrangement.Center,
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(horizontal = 30.dp)
+                        .background(Color.White)
+                ) {
+
+                    TextField(
+                        value = textFieldState, onValueChange = {
+                            textFieldState = it
+                        },
+                        label = {
+                            Text(text = "Enter Your Name")
+                        },
+                        singleLine = true,
+                        modifier = Modifier.fillMaxWidth(),
+                        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number, imeAction = ImeAction.Done)
+
+                    )
+                    Spacer(modifier = Modifier.height(16.dp))
+                    Button(onClick = {
+
+                        if (textFieldState.isEmpty()){
+                            scope.launch {
+                                snackBarHostState.showSnackbar("Please enter name")
+                            }
+                        }else {
+                            scope.launch {
+                                snackBarHostState.showSnackbar(textFieldState)
+                            }
+                        }
+
+
+                    }) {
+                        Text(text = "Submit")
+                    }
+                }
+            }
+
+
+            // Demo 7 : 13-02-2024
+
+            /* Column(
+                 modifier = Modifier
+                     .fillMaxSize(),
+                 horizontalAlignment = Alignment.CenterHorizontally,
+                 verticalArrangement = Arrangement.Center
+
+             ) {
+
+                 ColorBox()
+                 Text(text = "Click on box to change its color",Modifier.padding(top = 20.dp))
+             }*/
+
+
+            // Demo 6 : 13-02-2024
+
+            /* val fontFamily = FontFamily(
+                 Font(R.font.protest_revolution_regular, FontWeight.Thin),
+                 Font(R.font.titillium_web_black, FontWeight.Thin),
+             )
+
+             Box(
+                 modifier = Modifier
+                     .fillMaxSize()
+                     .background(Color.White)
+                     .padding(15.dp),
+                 contentAlignment = Alignment.Center
+
+
+             ) {
+                 Text(
+                     text = buildAnnotatedString {
+                         withStyle(
+                             style = SpanStyle(
+                                 color = Color.Red,
+                                 fontSize = 60.sp
+                             )
+                         ) {
+                             append("A")
+                         }
+                         append("ndroid   ")
+
+                         withStyle(
+                             style = SpanStyle(
+                                 color = Color.Red,
+                                 fontSize = 60.sp
+                             )
+                         ) {
+                             append("J")
+                         }
+                         append("etpack")
+                     },
+                     color = Color.Black,
+                     fontSize = 28.sp,
+                     fontFamily = fontFamily,
+                     fontWeight = FontWeight.ExtraBold,
+                     textAlign = TextAlign.Center
+                 )
+             }*/
+
 
             // Demo 5 : 13-02-2024
 
-            val painter = painterResource(id = R.drawable.bg_image)
-            val description = "Card Image demo"
-            val title = "Card Image Demo"
-            Box(
-                modifier = Modifier
-                    .padding(16.dp)
-            ) {
-                ImageCard(painter = painter, title = title, contentDescription = description)
-            }
-
+            /*       val painter = painterResource(id = R.drawable.bg_image)
+                   val description = "Card Image demo"
+                   val title = "Card Image Demo"
+                   Box(
+                       modifier = Modifier
+                           .padding(16.dp)
+                   ) {
+                       ImageCard(painter = painter, title = title, contentDescription = description)
+                   }
+       */
 
             // Demo 4 : 13-02-2024
 
@@ -142,7 +264,7 @@ class MainActivity : ComponentActivity() {
 
 }
 
-
+/*
 @Composable
 fun ImageCard(
     painter: Painter,
@@ -204,4 +326,30 @@ fun ImageCard(
     }
 
 
-}
+}*/
+
+/*
+@Composable
+fun ColorBox() {
+
+    val color = remember {
+        mutableStateOf(Color.Green)
+    }
+
+    Box(
+        modifier = Modifier
+            .height(200.dp)
+            .width(200.dp)
+            .background(color.value)
+            .clickable {
+                color.value = Color(
+                    Random.nextFloat(),
+                    Random.nextFloat(),
+                    Random.nextFloat(),
+                    1f
+                )
+            }
+    )
+
+}*/
+
