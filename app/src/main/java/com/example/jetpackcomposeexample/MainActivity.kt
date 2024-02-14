@@ -1,33 +1,19 @@
 package com.example.jetpackcomposeexample
 
 import android.annotation.SuppressLint
-import android.app.Notification.Action
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material3.Button
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.SnackbarHost
-import androidx.compose.material3.SnackbarHostState
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
 import androidx.compose.runtime.*
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.input.ImeAction
-import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import kotlinx.coroutines.launch
+import androidx.compose.ui.unit.sp
 
 class MainActivity : ComponentActivity() {
 
@@ -37,61 +23,245 @@ class MainActivity : ComponentActivity() {
 
         setContent {
 
+            // Demo 10.2 : 14-02-2024
+
+      /*      LazyColumn {
+
+                items(500000) {
+                    Text(
+                        text = "item $it",
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(vertical = 20.dp),
+                        fontSize = 20.sp,
+                        fontWeight = FontWeight.Bold,
+                        textAlign = TextAlign.Center
+                    )
+                }
+            }*/
+
+            // Demo 10 : 14-02-2024
+
+            /* val scrollState = rememberScrollState()
+
+             Column(
+                 modifier = Modifier.verticalScroll(scrollState)
+             ) {
+                 for (i in 1..50) {
+                     Text(
+                         text = "item $i",
+                         modifier = Modifier
+                             .fillMaxWidth()
+                             .padding(vertical = 20.dp),
+                         fontSize = 20.sp,
+                         fontWeight = FontWeight.Bold,
+                         textAlign = TextAlign.Center
+                     )
+                 }
+
+             }*/
+
+
+            // Demo 9 : 14-02-2024
+
+            /* val snackBarHostState = remember { SnackbarHostState() }
+             val scope = rememberCoroutineScope()
+
+             var name by remember {
+                 mutableStateOf("")
+             }
+             var email by remember {
+                 mutableStateOf("")
+             }
+             var phone by remember {
+                 mutableStateOf("")
+             }
+             var password by remember {
+                 mutableStateOf("")
+             }
+
+             Scaffold(
+                 snackbarHost = { SnackbarHost(hostState = snackBarHostState) }
+             ) {
+                 Column(
+                     modifier = Modifier
+                         .background(Color.White)
+                         .fillMaxSize(),
+                     horizontalAlignment = Alignment.CenterHorizontally
+                 ) {
+
+                     Text(
+                         text = "REGISTRATION",
+                         color = Color.Black,
+                         modifier = Modifier
+                             .fillMaxWidth()
+                             .padding(30.dp),
+                         textAlign = TextAlign.Center,
+                         fontSize = 30.sp,
+                         fontWeight = FontWeight.Bold
+                     )
+
+                     TextField(
+                         value = name,
+                         onValueChange = {
+                             name = it
+                         },
+                         label = {
+                             Text(text = "Enter Name")
+                         },
+                         singleLine = true,
+                         modifier = Modifier
+                             .fillMaxWidth()
+                             .padding(top = 20.dp, end = 20.dp, start = 20.dp),
+                         keyboardOptions = KeyboardOptions(
+                             keyboardType = KeyboardType.Text,
+                             imeAction = ImeAction.Next
+                         )
+                     )
+
+                     TextField(
+                         value = email,
+                         onValueChange = {
+                             email = it
+                         },
+                         label = {
+                             Text(text = "Enter email")
+                         },
+                         singleLine = true,
+                         modifier = Modifier
+                             .fillMaxWidth()
+                             .padding(top = 10.dp, end = 20.dp, start = 20.dp),
+                         keyboardOptions = KeyboardOptions(
+                             keyboardType = KeyboardType.Email,
+                             imeAction = ImeAction.Next
+                         )
+                     )
+
+                     TextField(
+                         value = phone,
+                         onValueChange = {
+                             phone = it
+                         },
+                         label = {
+                             Text(text = "Enter phone")
+                         },
+                         singleLine = true,
+                         modifier = Modifier
+                             .fillMaxWidth()
+                             .padding(top = 10.dp, end = 20.dp, start = 20.dp),
+                         keyboardOptions = KeyboardOptions(
+                             keyboardType = KeyboardType.Phone,
+                             imeAction = ImeAction.Next
+                         )
+                     )
+
+                     TextField(
+                         value = password,
+                         onValueChange = {
+                             password = it
+                         },
+                         label = {
+                             Text(text = "Enter password")
+                         },
+                         singleLine = true,
+                         modifier = Modifier
+                             .fillMaxWidth()
+                             .padding(top = 10.dp, end = 20.dp, start = 20.dp),
+                         keyboardOptions = KeyboardOptions(
+                             keyboardType = KeyboardType.Password,
+                             imeAction = ImeAction.Done
+                         )
+                     )
+
+                     Spacer(modifier = Modifier.height(25.dp))
+
+                     Button(onClick = {
+
+                         if (name.isEmpty()) {
+                             scope.launch {
+                                 snackBarHostState.showSnackbar("Please enter name")
+                             }
+                         } else if (email.isEmpty()) {
+                             scope.launch {
+                                 snackBarHostState.showSnackbar("Please enter email")
+                             }
+                         } else if (phone.isEmpty()) {
+                             scope.launch {
+                                 snackBarHostState.showSnackbar("Please enter phone")
+                             }
+                         } else if (password.isEmpty()) {
+                             scope.launch {
+                                 snackBarHostState.showSnackbar("Please enter password")
+                             }
+                         } else {
+                             scope.launch {
+                                 snackBarHostState.showSnackbar("Registration successfully")
+                             }
+                         }
+
+                     }) {
+                         Text(text = "Submit")
+                     }
+
+                 }
+             }*/
+
+
             // Demo 8 : 13-02-2024
 
-            val snackBarHostState = remember { SnackbarHostState() }
-            var textFieldState by remember {
-                mutableStateOf("")
-            }
-            val scope = rememberCoroutineScope()
+            /* val snackBarHostState = remember { SnackbarHostState() }
+             var textFieldState by remember {
+                 mutableStateOf("")
+             }
+             val scope = rememberCoroutineScope()
 
 
-            Scaffold(
-                modifier = Modifier.fillMaxSize(),
-                snackbarHost = { SnackbarHost(hostState = snackBarHostState) }
+             Scaffold(
+                 modifier = Modifier.fillMaxSize(),
+                 snackbarHost = { SnackbarHost(hostState = snackBarHostState) }
 
-            ) {
+             ) {
 
-                Column(
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                    verticalArrangement = Arrangement.Center,
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .padding(horizontal = 30.dp)
-                        .background(Color.White)
-                ) {
+                 Column(
+                     horizontalAlignment = Alignment.CenterHorizontally,
+                     verticalArrangement = Arrangement.Center,
+                     modifier = Modifier
+                         .fillMaxSize()
+                         .padding(horizontal = 30.dp)
+                         .background(Color.White)
+                 ) {
 
-                    TextField(
-                        value = textFieldState, onValueChange = {
-                            textFieldState = it
-                        },
-                        label = {
-                            Text(text = "Enter Your Name")
-                        },
-                        singleLine = true,
-                        modifier = Modifier.fillMaxWidth(),
-                        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number, imeAction = ImeAction.Done)
+                     TextField(
+                         value = textFieldState, onValueChange = {
+                             textFieldState = it
+                         },
+                         label = {
+                             Text(text = "Enter Your Name")
+                         },
+                         singleLine = true,
+                         modifier = Modifier.fillMaxWidth(),
+                         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number, imeAction = ImeAction.Done)
 
-                    )
-                    Spacer(modifier = Modifier.height(16.dp))
-                    Button(onClick = {
+                     )
+                     Spacer(modifier = Modifier.height(16.dp))
+                     Button(onClick = {
 
-                        if (textFieldState.isEmpty()){
-                            scope.launch {
-                                snackBarHostState.showSnackbar("Please enter name")
-                            }
-                        }else {
-                            scope.launch {
-                                snackBarHostState.showSnackbar(textFieldState)
-                            }
-                        }
+                         if (textFieldState.isEmpty()){
+                             scope.launch {
+                                 snackBarHostState.showSnackbar("Please enter name")
+                             }
+                         }else {
+                             scope.launch {
+                                 snackBarHostState.showSnackbar(textFieldState)
+                             }
+                         }
 
 
-                    }) {
-                        Text(text = "Submit")
-                    }
-                }
-            }
+                     }) {
+                         Text(text = "Submit")
+                     }
+                 }
+             }*/
 
 
             // Demo 7 : 13-02-2024
