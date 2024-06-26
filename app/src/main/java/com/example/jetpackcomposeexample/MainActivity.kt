@@ -32,7 +32,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            ui()
+            Ui()
             // Demo 10.2 : 14-02-2024
 
             /*  LazyColumn {
@@ -556,12 +556,12 @@ fun ColumnScope.SurfaceItem(backgroundColor: Color, textColor: Color, text: Stri
 @Composable
 fun DefaultPreview() {
     JetPackComposeExampleTheme {
-        ui()
+        Ui()
     }
 }
 
 @Composable
-fun ui() {
+fun Ui() {
     Row(
         modifier = Modifier
             .fillMaxSize()
@@ -585,12 +585,12 @@ fun ui() {
                 .fillMaxSize()
                 .weight(1f)
         ) {
-            SurfaceItem(backgroundColor = Color.Black, textColor = Color.White, text = "A")
-            SurfaceItem(backgroundColor = Color.White, textColor = Color.Black, text = "B")
-            SurfaceItem(backgroundColor = Color.Black, textColor = Color.White, text = "C")
-            SurfaceItem(backgroundColor = Color.White, textColor = Color.Black, text = "D")
-            SurfaceItem(backgroundColor = Color.Black, textColor = Color.White, text = "E")
-            SurfaceItem(backgroundColor = Color.White, textColor = Color.Black, text = "F")
+            SurfaceItem(backgroundColor = Color.Black, textColor = Color.White, text = "G")
+            SurfaceItem(backgroundColor = Color.White, textColor = Color.Black, text = "H")
+            SurfaceItem(backgroundColor = Color.Black, textColor = Color.White, text = "I")
+            SurfaceItem(backgroundColor = Color.White, textColor = Color.Black, text = "J")
+            SurfaceItem(backgroundColor = Color.Black, textColor = Color.White, text = "K")
+            SurfaceItem(backgroundColor = Color.White, textColor = Color.Black, text = "L")
         }
 
         Column(
@@ -598,12 +598,25 @@ fun ui() {
                 .fillMaxSize()
                 .weight(1f)
         ) {
-            SurfaceItem(backgroundColor = Color.White, textColor = Color.Black, text = "A")
-            SurfaceItem(backgroundColor = Color.Black, textColor = Color.White, text = "B")
-            SurfaceItem(backgroundColor = Color.White, textColor = Color.Black, text = "C")
-            SurfaceItem(backgroundColor = Color.Black, textColor = Color.White, text = "D")
-            SurfaceItem(backgroundColor = Color.White, textColor = Color.Black, text = "E")
-            SurfaceItem(backgroundColor = Color.Black, textColor = Color.White, text = "F")
+            SurfaceItem(backgroundColor = Color.White, textColor = Color.Black, text = "M")
+            SurfaceItem(backgroundColor = Color.Black, textColor = Color.White, text = "N")
+            SurfaceItem(backgroundColor = Color.White, textColor = Color.Black, text = "O")
+            SurfaceItem(backgroundColor = Color.Black, textColor = Color.White, text = "P")
+            SurfaceItem(backgroundColor = Color.White, textColor = Color.Black, text = "Q")
+            SurfaceItem(backgroundColor = Color.Black, textColor = Color.White, text = "R")
+        }
+
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .weight(1f)
+        ) {
+            SurfaceItem(backgroundColor = Color.Black, textColor = Color.White, text = "S")
+            SurfaceItem(backgroundColor = Color.White, textColor = Color.Black, text = "T")
+            SurfaceItem(backgroundColor = Color.Black, textColor = Color.White, text = "U")
+            SurfaceItem(backgroundColor = Color.White, textColor = Color.Black, text = "V")
+            SurfaceItem(backgroundColor = Color.Black, textColor = Color.White, text = "W")
+            SurfaceItem(backgroundColor = Color.White, textColor = Color.Black, text = "X")
         }
     }
 }
