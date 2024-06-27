@@ -12,6 +12,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
+            ShowBoxCustomization()
             //BlackAndWhiteCubeWithText()
             //ShowListViewUsingItems()
             //ShowListViewUsingForLoopAndColumns()
@@ -44,5 +45,6 @@ fun DefaultPreview() {
         //TextWithBackGround()
         //ShowNormalHorizontalText()
         //ShowVerticalNormalText()
+        ShowBoxCustomization()
     }
 }
