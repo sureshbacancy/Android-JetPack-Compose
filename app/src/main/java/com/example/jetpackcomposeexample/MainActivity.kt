@@ -15,6 +15,8 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
+            //You can uncomment function to run & check particular demo
+
             //ShowCustomTexts()
             //BlackAndWhiteCubeWithText()
             //ShowListViewUsingItems()
@@ -31,7 +33,7 @@ class MainActivity : ComponentActivity() {
             // TextSelection()
             //ExpandableCardView()
             //TextFieldExample(this)
-            CustomGoogleButton()
+            //CustomGoogleButton()
         }
     }
 }
@@ -43,6 +45,8 @@ fun DefaultPreview() {
     val context = LocalContext.current
 
     JetPackComposeExampleTheme {
+        //You can uncomment function to run & check particular demo
+
         //BlackAndWhiteCubeWithText()
         //ShowListViewUsingItems()
         //ShowListViewUsingForLoopAndColumns()
@@ -60,6 +64,6 @@ fun DefaultPreview() {
         //TextSelection()
         //ExpandableCardView()
         //TextFieldExample(context)
-        CustomGoogleButton()
+        //CustomGoogleButton()
     }
 }
