@@ -26,6 +26,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 
 @Composable
@@ -38,6 +39,27 @@ fun TextFieldExample(context: Context) {
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Top
     ) {
+
+        // Max 10 characters allow to enter
+        var text0 by remember { mutableStateOf("") }
+        val max = 11
+        TextField(
+            modifier = Modifier.padding(5.dp),
+            value = text0,
+            onValueChange = { newText ->
+                if(text0.length <= max){
+                    text0 = newText
+                } else {
+                    text0 = text0.dropLast(1)
+                    Toast.makeText(context, "Max 10 characters limit", Toast.LENGTH_SHORT).show()
+                }
+            },
+            placeholder = {
+                Text(text = "Max characters Example")
+            },
+            keyboardOptions = KeyboardOptions(imeAction = ImeAction.Next),
+
+        )
 
         var text1 by remember { mutableStateOf("") }
         TextField(

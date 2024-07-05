@@ -34,7 +34,8 @@ class MainActivity : ComponentActivity() {
             //ExpandableCardView()
             //TextFieldExample(this)
             //CustomGoogleButton()
-            PasswordTextField()
+            //PasswordTextField()
+            TextFieldExample(this)
         }
     }
 }
@@ -66,6 +67,7 @@ fun DefaultPreview() {
         //ExpandableCardView()
         //TextFieldExample(context)
         //CustomGoogleButton()
-        PasswordTextField()
+        //PasswordTextField()
+        TextFieldExample(context)
     }
 }
