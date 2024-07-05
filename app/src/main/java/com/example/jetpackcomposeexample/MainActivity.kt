@@ -30,10 +30,11 @@ class MainActivity : ComponentActivity() {
             //TextWithBackGround()
             //ShowNormalHorizontalText()
             //ShowVerticalNormalText()
-            // TextSelection()
+            //TextSelection()
             //ExpandableCardView()
             //TextFieldExample(this)
             //CustomGoogleButton()
+            PasswordTextField()
         }
     }
 }
@@ -65,5 +66,6 @@ fun DefaultPreview() {
         //ExpandableCardView()
         //TextFieldExample(context)
         //CustomGoogleButton()
+        PasswordTextField()
     }
 }
