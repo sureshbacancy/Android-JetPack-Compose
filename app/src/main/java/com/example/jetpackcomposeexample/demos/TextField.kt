@@ -123,7 +123,7 @@ fun TextFieldExample(context: Context) {
                 IconButton(onClick = {
                     Toast.makeText(context, "Icon pressed", Toast.LENGTH_SHORT).show()
                 }) {
-                    Icon(imageVector = Icons.Default.Call, contentDescription = "")
+                    Icon(imageVector = Icons.Default.Email, contentDescription = "")
                 }
             },
             keyboardOptions = KeyboardOptions(imeAction = ImeAction.Next)

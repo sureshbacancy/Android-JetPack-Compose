@@ -61,9 +61,7 @@ class SplashActivity : BaseActivity() {
     }
 }
 
-
 @Composable
-@Preview
 fun SplashScreenContent() {
     val fontFamily = FontFamily(
         Font(R.font.protest_revolution_regular, FontWeight.Thin),
