@@ -1,5 +1,6 @@
 package com.example.jetpackcomposeexample.demos
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -24,6 +25,9 @@ fun ShowListViewUsingItems() {
                 text = "Item - ${it.plus(1)}",
                 modifier = Modifier
                     .fillMaxWidth()
+                    .clickable {
+
+                    }
                     .padding(vertical = 20.dp),
                 fontSize = 20.sp,
                 fontWeight = FontWeight.Bold,

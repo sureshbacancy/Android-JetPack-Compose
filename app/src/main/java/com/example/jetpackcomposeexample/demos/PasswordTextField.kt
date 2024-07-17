@@ -40,8 +40,6 @@ fun PasswordTextField() {
     val icon = if (passwordVisibility) painterResource(id = R.drawable.eye_opened)
     else painterResource(id = R.drawable.eye_closed)
 
-
-
     Column(
         modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,

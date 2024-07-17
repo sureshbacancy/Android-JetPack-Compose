@@ -17,6 +17,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import com.example.jetpackcomposeexample.extension.openScreen
+import com.example.jetpackcomposeexample.home.ui.HomeScreen
 import kotlin.random.Random
 
 // Created by Suresh Prajapati - 13-02-2024
@@ -47,6 +49,9 @@ fun ColorBox() {
         .width(200.dp)
         .background(color.value)
         .clickable {
+
+
+
             color.value = Color(
                 Random.nextFloat(), Random.nextFloat(), Random.nextFloat(), 1f
             )
