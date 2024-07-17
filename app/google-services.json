@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "655763599585",
+    "project_id": "jetpackcomposeexample-7c37b",
+    "storage_bucket": "jetpackcomposeexample-7c37b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:655763599585:android:87e62357a60830f8a807a0",
+        "android_client_info": {
+          "package_name": "com.example.jetpackcomposeexample"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAhm6sO2wdAnuGkhggx3sSAEON4-o6ubvo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
